@@ -28,7 +28,7 @@ public class ReferenceTypeExample {
 		System.out.println("scores[2] : " + scores[2]);
 		
 		int sum = 0;
-		for(int i=0; i<3; i++) { // i<=3 했을 시 ArrayIndexOutOfBoundsException 오류 : 배열이 가질 수 있는 인덱스를 벗어났다.
+		for(int i=0; i<scores.length; i++) { // i<=3 했을 시 ArrayIndexOutOfBoundsException 오류 : 배열이 가질 수 있는 인덱스를 벗어났다.
 			sum += scores[i];
 		}
 		// ▲ for문이 아니면 밑처럼 해야 됨.
@@ -42,10 +42,44 @@ public class ReferenceTypeExample {
 		System.out.println("평균 : " + avg);
 		
 		//주의사항
-		int[] scoreList;
+		int[] scoreList = null;
 		scoreList = new int[] {83, 90, 87};
 		// 변수를 먼저 선언하고 나서, 후에 수를 주는 건 불가능하다.
-		// 쓰고 싶으면 new 연산자 해줘야 함. 크기 주면 안 된다 [] 비워둬야 함.
+		// 쓰고 싶으면 >new 연산자< 해줘야 함. 생성자를 호출해줌. 크기 주면 안 된다 [] 비워둬야 함.
+		
+		sum = 0;
+		for(int i=0; i<3; i++) {
+			sum = sum + scoreList[i];
+		}
+		
+		System.out.println("총합 : " + sum);
+		
+		// new 연산자로 배열 생성
+		int[] array = new int[3];
+		for(int i=0; i<3; i++) {
+			System.out.println("array["+i+"] : " +array[i]);
+		}
+		
+		String[] strAry = new String[4];
+		for(int i = 0; i<strAry.length; i++) {
+			strAry[i] = String.valueOf(i);
+		}
+		
+		for(int i = 0; i<strAry.length; i++) {
+			System.out.println("strAry["+i+"]" + strAry[i]);
+		}
+		
+//		------------------------------
+//		static int add(int[] numList) {
+//			int sum = 0;
+//			for(int i=0; i<numList.length; i++) {
+//				sum += numList[i];
+//			}
+//			return sum;
+//			
+//			sum = add(new int[] {83, 90, 87});
+//		----------------------------------------
+		
+		
+		}
 	}
-
-}

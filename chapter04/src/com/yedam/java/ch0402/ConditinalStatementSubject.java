@@ -1,5 +1,7 @@
 package com.yedam.java.ch0402;
 
+import java.util.Scanner;
+
 public class ConditinalStatementSubject {
 
 	public static void main(String[] args) {
@@ -82,6 +84,58 @@ public class ConditinalStatementSubject {
 			}
 		}
 		System.out.println("주사위를 던진 횟수는 총" + total + "번 입니다.");
-
+		
+		//문제6) 책 161p 6번
+		//    * ▶ 1번째줄, 공백 3개, 별 1개 => 총 문자 4개
+		//   ** ▶ 2번재줄, 공백 2개, 별 2개 => 총 문자 4개
+		//  *** ▶ 3번재줄, 공백 1개, 별 3개 => 총 문자 4개
+		// **** ▶ 4번재줄, 공백 0개, 별 4개 => 총 문자 4개
+		
+		for(int i=1; i<=4; i++) { // line 표시
+			for(int j=1; j<=4; j++) { // 문자 수
+				if(j<= (4-i)) { // 각 줄에서 공백을 몇 개 표기하는지가 관건.
+					System.out.print(" ");
+				}else {
+					System.out.print("*");
+				}
+			}
+			System.out.println();
+		}
+		
+		//문제7) 책 161p 7번
+		boolean run = true;
+		int balance = 0;
+		Scanner scanner = new Scanner(System.in);
+		
+		while(run) {
+			System.out.println("---------------------------------");
+			System.out.println("1.예금 | 2.출금 | 3.잔고 | 4.종료");
+			System.out.println("---------------------------------");
+			System.out.print("선택> ");
+			int selectNo = Integer.parseInt(scanner.nextLine()); 
+			//parseInt는 일종의 String. 타입을 맞춰줌. 캐스팅은 같은 기본 타입끼리/참조 타입끼리만 가능
+			if(selectNo == 1) {
+				// 메뉴 : 예금
+				System.out.print("예금액> ");
+				int money = Integer.parseInt(scanner.nextLine());
+				balance = balance + money;
+			}else if(selectNo ==2) {
+				// 메뉴 : 출금
+				System.out.print("출금액> ");
+				int money = Integer.parseInt(scanner.nextLine());
+				balance -= money;
+			}else if(selectNo ==3) {
+				// 메뉴 : 잔고
+				System.out.print("잔고> " + balance);
+			}else if(selectNo ==4) {
+				// 메뉴 : 종료
+				run = false;
+			}else {
+				// 기타입력일 경우 안내 출력
+				System.out.println("정해진 메뉴(1~4) 중에서 선택해주세요.");
+			}
+		}
+		System.out.println("프로그램 종료");
+		
 	}
 }
